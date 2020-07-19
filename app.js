@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 var authRouter = require("./routes/auth");
 var shopRouter = require("./routes/shop");
@@ -30,6 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+//Cors Policy
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/", authRouter);
 app.use("/shop", shopRouter);
