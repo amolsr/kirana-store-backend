@@ -1,16 +1,23 @@
 const Shop = require("../models/Shop");
 
 exports.addShop = (req, res) => {
-  const { shopName, gstNumber, addressLine, pincode, city, range } = req.body;
+  const {
+    userId,
+    shopName,
+    gstNumber,
+    addressLine,
+    pincode,
+    city,
+    range,
+  } = req.body;
   Shop.create({
     shopName: shopName.toUpperCase().trim(),
-    owner: req.userId,
+    owner: userId,
     gstNumber: gstNumber.trim(),
     addressLine: addressLine,
     pincode: pincode,
     city: city,
     range: range,
-    service: req.serviceId,
   })
     .then((shop) => {
       res.results.push("Shop Created");

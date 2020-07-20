@@ -6,10 +6,15 @@ var serviceController = require("../controller/serviceController");
 var utilController = require("../controller/utilController");
 
 router.post(
-  "/register/shop",
+  "/register/user",
   userController.addUser,
-  serviceController.addService,
+  utilController.sendResult
+);
+
+router.post(
+  "/register/shop",
   shopController.addShop,
   utilController.sendResult
 );
+
 module.exports = router;
