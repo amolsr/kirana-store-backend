@@ -87,7 +87,7 @@ module.exports = {
               schema: {
                 type: "object",
                 properties: {
-                  userId: {
+                  owner: {
                     type: "string",
                     example: "5edcd9e7384e4e00171191e5",
                   },

@@ -2,7 +2,7 @@ const Shop = require("../models/Shop");
 
 exports.addShop = (req, res) => {
   const {
-    userId,
+    owner,
     shopName,
     gstNumber,
     addressLine,
@@ -13,7 +13,7 @@ exports.addShop = (req, res) => {
   } = req.body;
   Shop.create({
     shopName: shopName.toUpperCase().trim(),
-    owner: userId,
+    owner: owner,
     gstNumber: gstNumber.trim(),
     addressLine: addressLine,
     pincode: pincode,
