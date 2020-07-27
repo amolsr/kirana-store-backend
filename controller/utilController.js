@@ -8,12 +8,3 @@ exports.validateRequest = (req, res, next) => {
     next();
   }
 };
-
-exports.sendResult = (req, res) => {
-  var { results } = req;
-  if (results) {
-    res.status(200).json({ success: true, result: results });
-  } else {
-    res.status(404).json({ success: false, result: "No Result Found" });
-  }
-};

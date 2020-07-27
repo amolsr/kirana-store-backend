@@ -9,6 +9,7 @@ exports.addShop = (req, res) => {
     pincode,
     city,
     range,
+    service,
   } = req.body;
   Shop.create({
     shopName: shopName.toUpperCase().trim(),
@@ -18,12 +19,13 @@ exports.addShop = (req, res) => {
     pincode: pincode,
     city: city,
     range: range,
+    service: service,
   })
     .then((shop) => {
-      res.results.push("Shop Created");
-      next();
+      res.status(200).json({ success: true, result: shop });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({ success: false, errors: err });
     });
 };

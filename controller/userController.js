@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-exports.addUser = (req, res, next) => {
+exports.addUser = (req, res) => {
   const { name, mobile, email, password } = req.body;
   User.create({
     name: name.toUpperCase().trim(),
@@ -9,9 +9,7 @@ exports.addUser = (req, res, next) => {
     password: password,
   })
     .then((user) => {
-      res.results.push("User Created");
-      req.userId = user._id;
-      next();
+      res.status(200).json({ success: true, result: user });
     })
     .catch((error) => {
       res.status(500).json({ success: false, error: error });

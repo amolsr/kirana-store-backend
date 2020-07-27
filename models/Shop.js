@@ -26,8 +26,7 @@ var ShopSchema = new mongoose.Schema(
       type: Number,
     },
     service: {
-      type: mongoose.Types.ObjectId,
-      rel: "Service",
+      type: [{ type: String }],
     },
   },
   { timestamps: true }
