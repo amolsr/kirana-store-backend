@@ -26,6 +26,8 @@ exports.addShop = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ success: false, errors: err });
+      if (err && err.code === 11000)
+        return res.status(409).json({ success: false, error: "Shop Exist" });
+      else res.status(500).json({ success: false, errors: err });
     });
 };

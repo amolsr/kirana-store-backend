@@ -11,8 +11,10 @@ exports.addUser = (req, res) => {
     .then((user) => {
       res.status(200).json({ success: true, result: user });
     })
-    .catch((error) => {
-      res.status(500).json({ success: false, error: error });
+    .catch((err) => {
+      if (err && err.code === 11000)
+        return res.status(409).json({ success: false, error: "User Exist" });
+      else res.status(500).json({ success: false, errors: err });
     });
 };
 

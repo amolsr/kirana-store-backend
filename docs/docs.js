@@ -132,7 +132,7 @@ module.exports = {
             description: "Success",
           },
           "409": {
-            description: "User Exist",
+            description: "Shop Exist",
           },
         },
       },
