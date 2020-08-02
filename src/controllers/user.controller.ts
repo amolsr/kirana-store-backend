@@ -78,10 +78,12 @@ export class UserController {
     newUserRequest: NewUserRequest,
   ): Promise<User> {
     // All new users have the "customer" role by default
-    newUserRequest.roles = ['customer'];
+    if (newUserRequest.roles == null) {
+      newUserRequest.roles = ['customer'];
+    }
     // ensure a valid email value and password value
     validateCredentials(_.pick(newUserRequest, ['email', 'password']));
-    
+
     // encrypt the password
     const password = await this.passwordHasher.hashPassword(
       newUserRequest.password,
